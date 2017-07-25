@@ -14,4 +14,11 @@ public class StringUtil {
     public static boolean isNotEmpty(String str) {
         return !isEmpty(str);
     }
+
+    /**
+     * 分割固定格式的字符串
+     */
+    public static String[] splitString(String str, String seprator) {
+        return StringUtils.splitByWholeSeparator(str, seprator);
+    }
 }

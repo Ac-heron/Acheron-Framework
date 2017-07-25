@@ -9,7 +9,7 @@ import java.util.Set;
 
 /**
  * Class helper
- * 此类用户获取应用包下的所有类，应用包下的氖有service类，所有controller类
+ * 此类用户获取应用包下的所有类，应用包下的所有service类，所有controller类
  * 获取应用包名下的所有Bean类(带有Controllert和service注解的类产生的对象理解为本框架所管理的Bean）
  *
  * @author Acheron

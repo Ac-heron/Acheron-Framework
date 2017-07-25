@@ -1,0 +1,42 @@
+package com.herohuang.framework.bean;
+
+/**
+ * 封闭请求信息
+ *
+ * @author Acheron
+ * @date 25/07/2017
+ * @since 1.0.0
+ */
+public class Request {
+
+    /**
+     * request method
+     */
+    private String requestMethod;
+
+    /**
+     * request path
+     */
+   private String requestPath;
+
+    public Request(String requestMethod, String requestPath) {
+        this.requestMethod = requestMethod;
+        this.requestPath = requestPath;
+    }
+
+    public String getRequestMethod() {
+        return requestMethod;
+    }
+
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
+
+    public String getRequestPath() {
+        return requestPath;
+    }
+
+    public void setRequestPath(String requestPath) {
+        this.requestPath = requestPath;
+    }
+}

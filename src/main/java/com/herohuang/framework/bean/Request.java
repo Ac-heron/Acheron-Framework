@@ -1,5 +1,8 @@
 package com.herohuang.framework.bean;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * 封闭请求信息
  *
@@ -33,4 +36,17 @@ public class Request {
         return requestPath;
     }
 
+    /**
+     * 此处重写hashcode equals方法，不然controllerhelper中的ACTION_MAP存进去，取出来的不一致
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
+    }
 }

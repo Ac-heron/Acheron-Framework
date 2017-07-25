@@ -34,6 +34,13 @@ public final class ClassUtil {
     }
 
     /**
+     * 加载类（将自动初始化）
+     */
+    public static Class<?> loadClass(String className) {
+        return loadClass(className, true);
+    }
+
+    /**
      * 加载类
      *
      * @param className     类名
@@ -133,7 +140,7 @@ public final class ClassUtil {
         String packageName = "com.herohuang";
         Set<Class<?>> classSet = getClassSet(packageName);
         for (Class<?> aClass : classSet) {
-           String n = aClass.getName();
+            String n = aClass.getName();
             System.out.println(n);
         }
 

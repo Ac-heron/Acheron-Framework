@@ -28,15 +28,9 @@ public class Request {
         return requestMethod;
     }
 
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
-    }
 
     public String getRequestPath() {
         return requestPath;
     }
 
-    public void setRequestPath(String requestPath) {
-        this.requestPath = requestPath;
-    }
 }

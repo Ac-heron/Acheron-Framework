@@ -21,6 +21,9 @@ public final class ConfigHelper {
     public static String getJdbcDriver() {
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_DRIVER);
     }
+    public static String getJdbcUrl() {
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_URL);
+    }
 
     public static String getJdbcUsername() {
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_USERNAME);

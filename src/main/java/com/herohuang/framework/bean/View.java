@@ -1,5 +1,6 @@
 package com.herohuang.framework.bean;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,21 +26,19 @@ public class View {
         return path;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public Map<String, Object> getModel() {
         return model;
     }
 
-    public void setModel(Map<String, Object> model) {
-        this.model = model;
+
+    public View(String path) {
+        this.path = path;
+        this.model = new HashMap<>();
     }
 
-    public View(String path, Map<String, Object> model) {
-        this.path = path;
-        this.model = model;
+    public View addModel(String key, Object value) {
+        model.put(key, value);
+        return this;
     }
 }
 

@@ -1,5 +1,6 @@
 package com.herohuang.framework;
 
+import com.herohuang.framework.helper.AopHelper;
 import com.herohuang.framework.helper.BeanHelper;
 import com.herohuang.framework.helper.ClassHelper;
 import com.herohuang.framework.helper.ControllerHelper;
@@ -19,6 +20,7 @@ public final class HelperLoader {
         Class<?>[] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
+                AopHelper.class,
                 IocHelper.class,
                 ControllerHelper.class
         };

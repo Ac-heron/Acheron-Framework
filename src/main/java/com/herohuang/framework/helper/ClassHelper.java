@@ -4,6 +4,7 @@ import com.herohuang.framework.annotation.Controller;
 import com.herohuang.framework.annotation.Service;
 import com.herohuang.framework.util.ClassUtil;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -68,6 +69,32 @@ public final class ClassHelper {
         Set<Class<?>> classSet = new HashSet<>();
         classSet.addAll(getServiceClassSet());
         classSet.addAll(getControllerClassSet());
+        return classSet;
+    }
+
+    /**
+     * 获取应用包下的某父类或接口的所有子类或实现类
+     */
+    public static Set<Class<?>> getClassSetBySuper(Class<?> superClass) {
+        Set<Class<?>> classSet = new HashSet<>();
+        for (Class<?> cls : CLASS_SET) {
+            if (superClass.isAssignableFrom(cls) && !superClass.equals(cls)) {
+                CLASS_SET.add(cls);
+            }
+        }
+        return classSet;
+    }
+
+    /**
+     * 获取应用包下所有带有某类注解的所有类
+     */
+    public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotationClass) {
+        Set<Class<?>> classSet = new HashSet<>();
+        for (Class<?> cls : CLASS_SET) {
+            if (cls.isAnnotationPresent(annotationClass)) {
+                classSet.add(cls);
+            }
+        }
         return classSet;
     }
 

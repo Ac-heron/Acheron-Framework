@@ -1,6 +1,7 @@
 package com.herohuang.framework.bean;
 
 import com.herohuang.framework.util.CastUtil;
+import com.herohuang.framework.util.CollectionUtil;
 
 import java.util.Map;
 
@@ -26,6 +27,16 @@ public class Param {
      */
     public Map<String, Object> getMap() {
         return paramMap;
+    }
+
+    /**
+     * 验证是否为空
+     *
+     * @param
+     * @return
+     */
+    public boolean isEmpty() {
+        return CollectionUtil.isEmpty(paramMap);
     }
 
 

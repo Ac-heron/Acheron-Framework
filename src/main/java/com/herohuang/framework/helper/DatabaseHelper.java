@@ -80,6 +80,60 @@ public final class DatabaseHelper {
         }
     }
 
+
+    /**
+     * 开启事务
+     */
+    public static void beginTransaction() {
+        Connection conn = getConnection();
+        if (conn != null) {
+            try {
+                conn.setAutoCommit(false);
+            } catch (SQLException e) {
+                LOGGER.error("Begin transaction failure", e);
+                throw new RuntimeException(e);
+            } finally {
+                CONNECTION_HOLDER.set(conn);
+            }
+        }
+    }
+
+    /**
+     * 提交事务
+     */
+    public static void commitTransaction() {
+        Connection conn = getConnection();
+        if (conn != null) {
+            try {
+                conn.commit();
+                conn.close();
+            } catch (SQLException e) {
+                LOGGER.error("Commit transaction failure", e);
+                throw new RuntimeException(e);
+            } finally {
+                CONNECTION_HOLDER.remove();
+            }
+        }
+    }
+
+    /**
+     * 回滚事务
+     */
+    public void rollbackTransaction() {
+        Connection conn = getConnection();
+        if (conn != null) {
+            try {
+                conn.rollback();
+                conn.close();
+            } catch (SQLException e) {
+                LOGGER.error("Rollback transaction failure", e);
+                throw new RuntimeException(e);
+            } finally {
+                CONNECTION_HOLDER.remove();
+            }
+        }
+    }
+
     /**
      * 查询集合
      *
@@ -197,7 +251,7 @@ public final class DatabaseHelper {
         return executeUpdate(sql, params) == 1;
     }
 
-    public static <T> boolean updateEntity(Class<T> entityClass,long id, Map<String, Object> fieldMap) {
+    public static <T> boolean updateEntity(Class<T> entityClass, long id, Map<String, Object> fieldMap) {
         if (CollectionUtil.isEmpty(fieldMap)) {
             LOGGER.error("Can not update entity:fieldMap is empty");
             return false;
@@ -208,7 +262,7 @@ public final class DatabaseHelper {
         for (String fieldName : fieldMap.keySet()) {
             columns.append(fieldName).append(", ");
         }
-        sql += columns.substring(0,columns.lastIndexOf(", ")) + " WHERE id = ?";
+        sql += columns.substring(0, columns.lastIndexOf(", ")) + " WHERE id = ?";
 
         List<Object> paramList = new ArrayList<>();
         paramList.addAll(fieldMap.values());
@@ -217,7 +271,7 @@ public final class DatabaseHelper {
         return executeUpdate(sql, params) == 1;
     }
 
-    public static <T> boolean deleteEntity(Class<T> entityClass,long id) {
+    public static <T> boolean deleteEntity(Class<T> entityClass, long id) {
         String sql = "DELETE FROM " + getTableName(entityClass) + " WHERE id = ?";
         return executeUpdate(sql, id) == 1;
     }

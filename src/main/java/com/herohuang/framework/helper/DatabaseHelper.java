@@ -119,7 +119,7 @@ public final class DatabaseHelper {
     /**
      * 回滚事务
      */
-    public void rollbackTransaction() {
+    public static void rollbackTransaction() {
         Connection conn = getConnection();
         if (conn != null) {
             try {

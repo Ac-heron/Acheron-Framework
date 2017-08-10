@@ -4,6 +4,14 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringUtil {
 
+    /**
+     * 字符器分隔符
+     *
+     * @param str
+     * @return
+     */
+    public static final String SEPARATOR = String.valueOf((char) 29);
+
     public static boolean isEmpty(String str) {
         if (str != null) {
             str = str.trim();

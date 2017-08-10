@@ -4,7 +4,6 @@ import com.herohuang.framework.util.CastUtil;
 import com.herohuang.framework.util.CollectionUtil;
 import com.herohuang.framework.util.StringUtil;
 
-import java.net.FileNameMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,34 +70,52 @@ public class Param {
     }
 
     /**
+     * 获取所有上传文件
+     */
+    public List<FileParam> getFileList(String fieldName) {
+        return getFileMap().get(fieldName);
+    }
+
+    /**
+     * 获取唯一上传文件
+     */
+    public FileParam getFile(String fieldName) {
+        List<FileParam> fileList = getFileList(fieldName);
+        if (CollectionUtil.isNotEmpty(fileParamList) && fileList.size() == 1) {
+            return fileParamList.get(0);
+        }
+        return null;
+    }
+
+    /**
      * 验证是否为空
      *
      * @param
      * @return
      */
     public boolean isEmpty() {
-        return CollectionUtil.isEmpty(paramMap);
+        return CollectionUtil.isEmpty(formParamList) && CollectionUtil.isEmpty(fileParamList);
     }
 
 
     public long getLong(String name) {
-        return CastUtil.castLong(paramMap.get(name));
+        return CastUtil.castLong(getFieldMap().get(name));
     }
 
     public int getInt(String name) {
-        return CastUtil.castInt(paramMap.get(name));
+        return CastUtil.castInt(getFieldMap().get(name));
     }
 
     public String getString(String name) {
-        return CastUtil.castString(paramMap.get(name));
+        return CastUtil.castString(getFieldMap().get(name));
     }
 
     public boolean getBoolean(String name) {
-        return CastUtil.castBoolean(paramMap.get(name));
+        return CastUtil.castBoolean(getFieldMap().get(name));
     }
 
     public double getDouble(String name) {
-        return CastUtil.castDouble(paramMap.get(name));
+        return CastUtil.castDouble(getFieldMap().get(name));
     }
 
 }

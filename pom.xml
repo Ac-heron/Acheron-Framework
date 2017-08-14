@@ -64,6 +64,13 @@
       <version>3.2.2</version>
     </dependency>
 
+    <!--commons-filedupload-->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.3.1</version>
+
+    </dependency>
     <!--apache dbutil-->
     <dependency>
       <groupId>commons-dbutils</groupId>

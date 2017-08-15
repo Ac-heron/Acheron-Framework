@@ -17,4 +17,6 @@ public interface ConfigConstant {
     String APP_BASE_PACKAGE = "heron.framework.app.base_package";
     String APP_JSP_PATH = "heron.framework.app.jsp_path";
     String APP_STATIC_PATH = "heron.framework.app.static_path";
+
+    String APP_UPLOAD_LIMIT = "heron.framework.app.upload_limit";
 }

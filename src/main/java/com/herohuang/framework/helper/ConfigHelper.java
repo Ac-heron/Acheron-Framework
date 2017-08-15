@@ -49,4 +49,11 @@ public final class ConfigHelper {
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_STATIC_PATH,"/static/");
     }
 
+    /**
+     * 获取文件上传限制
+     */
+    public static int getAppUploadLimit() {
+        return PropsUtil.getInt(CONFIG_PROPS, ConfigConstant.APP_UPLOAD_LIMIT);
+    }
+
 }

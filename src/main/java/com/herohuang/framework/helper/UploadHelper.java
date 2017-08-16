@@ -4,6 +4,7 @@ import com.herohuang.framework.bean.FileParam;
 import com.herohuang.framework.bean.FormParam;
 import com.herohuang.framework.bean.Param;
 import com.herohuang.framework.util.CollectionUtil;
+import com.herohuang.framework.util.FileUtil;
 import com.herohuang.framework.util.StreamUtil;
 import com.herohuang.framework.util.StringUtil;
 import org.apache.commons.fileupload.FileItem;

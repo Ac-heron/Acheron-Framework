@@ -27,7 +27,7 @@ public final class ServletHelper {
     private HttpServletRequest request;
     private HttpServletResponse response;
 
-    public ServletHelper(HttpServletRequest request, HttpServletResponse response) {
+    private ServletHelper(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }

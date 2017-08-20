@@ -69,7 +69,7 @@ public class DispatcherServlet extends HttpServlet {
             }
             // 获取Action处理器
             Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
-            if (null != handler) {
+            if (handler != null) {
                 // 获取Controller类和Bean实例
                 Class<?> controllerClass = handler.getControllerClass();
                 Object controllerBean = BeanHelper.getBean(controllerClass);

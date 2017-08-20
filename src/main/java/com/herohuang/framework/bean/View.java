@@ -22,18 +22,17 @@ public class View {
      */
     private Map<String, Object> model;
 
+    public View(String path) {
+        this.path = path;
+        model = new HashMap<>();
+    }
+
     public String getPath() {
         return path;
     }
 
     public Map<String, Object> getModel() {
         return model;
-    }
-
-
-    public View(String path) {
-        this.path = path;
-        this.model = new HashMap<>();
     }
 
     public View addModel(String key, Object value) {

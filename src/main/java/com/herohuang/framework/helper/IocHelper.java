@@ -32,9 +32,9 @@ public final class IocHelper {
                         if (beanField.isAnnotationPresent(Inject.class)) {
                             Class<?> beanFieldClass = beanField.getType();
                             Object beanFieldInstance = beanMap.get(beanFieldClass);
-                            if (null != beanFieldInstance) {
+                            if (beanFieldInstance != null) {
                                 // 通过反射初始化BeanField
-                                ReflectionUtil.setField(beanInstance,beanField,beanFieldInstance);
+                                ReflectionUtil.setField(beanInstance, beanField, beanFieldInstance);
                             }
                         }
                     }

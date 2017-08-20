@@ -22,7 +22,4 @@ public class Data {
         return model;
     }
 
-    public void setModel(Object model) {
-        this.model = model;
-    }
 }

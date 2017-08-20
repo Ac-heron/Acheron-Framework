@@ -19,7 +19,7 @@ public final class BeanHelper {
     /**
      * 存放Bean类与Bean实例的映射关系
      */
-    public static final Map<Class<?>, Object> BEAN_MAP = new HashMap<>();
+    private static final Map<Class<?>, Object> BEAN_MAP = new HashMap<>();
 
     static {
         Set<Class<?>> beanClassSet = ClassHelper.getBeanClassSet();
@@ -51,10 +51,10 @@ public final class BeanHelper {
      * 设置bean实例
      *
      * @param cls
-     * @param object
+     * @param obj
      */
-    public static void setBean(Class<?> cls, Object object) {
-        BEAN_MAP.put(cls, object);
+    public static void setBean(Class<?> cls, Object obj) {
+        BEAN_MAP.put(cls, obj);
     }
 
 }

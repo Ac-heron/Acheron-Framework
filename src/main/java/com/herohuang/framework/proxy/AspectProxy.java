@@ -14,28 +14,28 @@ import java.lang.reflect.Method;
  */
 public abstract class AspectProxy implements Proxy {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(AspectProxy.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AspectProxy.class);
 
     @Override
     public Object doProxy(ProxyChain proxyChain) throws Throwable {
         Object result = null;
-        Class<?> targetClass = proxyChain.getTargetClass();
-        Method targetMethod = proxyChain.getTargetMethod();
-        Object[] methodParams = proxyChain.getMethodParams();
+        Class<?> cls = proxyChain.getTargetClass();
+        Method method = proxyChain.getTargetMethod();
+        Object[] params = proxyChain.getMethodParams();
 
         begin();
         try {
-            if (intercept(targetClass, targetMethod, methodParams)) {
-                before(targetClass, targetMethod, methodParams);
+            if (intercept(cls, method, params)) {
+                before(cls, method, params);
                 result = proxyChain.doProxyChain();
-                after(targetClass, targetMethod, methodParams, result);
+                after(cls, method, params, result);
             } else {
                 result = proxyChain.doProxyChain();
             }
 
         } catch (Exception e) {
             LOGGER.error("Proxy failure", e);
-            error(targetClass, targetMethod, methodParams, e);
+            error(cls, method, params, e);
             throw e;
         } finally {
             end();

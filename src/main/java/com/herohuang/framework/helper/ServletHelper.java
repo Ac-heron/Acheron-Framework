@@ -16,18 +16,18 @@ import java.io.IOException;
  * @date 16/08/2017
  * @since 1.0.0
  */
-public final class SerlvetHelper {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SerlvetHelper.class);
+public final class ServletHelper {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServletHelper.class);
 
     /**
      * 每个线程都有一份独自的serveltHelper实例
      */
-    private static final ThreadLocal<SerlvetHelper> SERLVET_HELPER_THREAD = new ThreadLocal<>();
+    private static final ThreadLocal<ServletHelper> SERLVET_HELPER_THREAD = new ThreadLocal<>();
 
     private HttpServletRequest request;
     private HttpServletResponse response;
 
-    public SerlvetHelper(HttpServletRequest request, HttpServletResponse response) {
+    public ServletHelper(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }
@@ -36,7 +36,7 @@ public final class SerlvetHelper {
      * 初始化
      */
     public static void init(HttpServletRequest request, HttpServletResponse response) {
-        SERLVET_HELPER_THREAD.set(new SerlvetHelper(request, response));
+        SERLVET_HELPER_THREAD.set(new ServletHelper(request, response));
     }
 
     /**

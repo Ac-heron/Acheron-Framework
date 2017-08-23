@@ -15,12 +15,21 @@ public final class ConfigHelper {
 
     private static final Properties CONFIG_PROPS = PropsUtil.loadProps(ConfigConstant.CONFIG_FILE);
 
+    public static String getString(String config) {
+        return PropsUtil.getString(CONFIG_PROPS, config);
+    }
+
+    public static boolean getBoolean(String str) {
+        return PropsUtil.getBoolean(CONFIG_PROPS, str);
+    }
+
     /**
      * Get jdbc driver
      */
     public static String getJdbcDriver() {
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_DRIVER);
     }
+
     public static String getJdbcUrl() {
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_URL);
     }
@@ -39,14 +48,15 @@ public final class ConfigHelper {
 
     /**
      * jsp path default is /WEB-INF/view/
+     *
      * @return
      */
     public static String getAppJspPath() {
-        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH,"/WEB-INF/view/");
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH, "/WEB-INF/view/");
     }
 
     public static String getAppStaticPath() {
-        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_STATIC_PATH,"/static/");
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_STATIC_PATH, "/static/");
     }
 
     /**
@@ -55,5 +65,6 @@ public final class ConfigHelper {
     public static int getAppUploadLimit() {
         return PropsUtil.getInt(CONFIG_PROPS, ConfigConstant.APP_UPLOAD_LIMIT);
     }
+
 
 }

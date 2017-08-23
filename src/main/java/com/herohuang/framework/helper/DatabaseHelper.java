@@ -9,6 +9,7 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -49,6 +50,10 @@ public final class DatabaseHelper {
         DATA_SOURCE.setUrl(url);
         DATA_SOURCE.setUsername(username);
         DATA_SOURCE.setPassword(password);
+    }
+
+    public static DataSource getDataSource() {
+        return DATA_SOURCE;
     }
 
     public static Connection getConnection() {

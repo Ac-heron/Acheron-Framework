@@ -1,5 +1,7 @@
 package com.herohuang.framework.annotation;
 
+import com.herohuang.framework.enums.RequestMethod;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -20,4 +22,13 @@ public @interface Action {
      * 请求类型与路径
      */
     String value();
+
+    /**
+     * 请求的方法方式get post etc..
+     *
+     * @return
+     * @see com.herohuang.framework.enums.RequestMethod
+     */
+    RequestMethod method();
+
 }

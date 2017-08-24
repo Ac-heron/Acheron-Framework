@@ -60,7 +60,7 @@ public class DispatcherServlet extends HttpServlet {
         ServletHelper.init(req, resp);
         try {
             // 获取请求方法和路径
-            String requestMethod = req.getMethod().toLowerCase();
+            String requestMethod = req.getMethod().toUpperCase();
             String requestPath = req.getPathInfo();
 
             // 过滤favicon.ico的请求

@@ -5,6 +5,8 @@ import com.herohuang.framework.bean.Handler;
 import com.herohuang.framework.bean.Request;
 import com.herohuang.framework.util.ArrayUtil;
 import com.herohuang.framework.util.CollectionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -19,6 +21,7 @@ import java.util.Set;
  * @since 1.0.0
  */
 public final class ControllerHelper {
+    public static final Logger logger = LoggerFactory.getLogger(ControllerHelper.class);
     /**
      * 存放请求与处理器的映射关系
      */
@@ -37,19 +40,14 @@ public final class ControllerHelper {
                         if (method.isAnnotationPresent(Action.class)) {
                             // 从Action注解中获取url映射
                             Action action = method.getAnnotation(Action.class);
-                            String mapping = action.value();
+                            String requestPath = action.value();
+                            String requestMethod = action.method().name();
                             //验证url映射规则
-                            if (mapping.matches("\\w+:/\\w*")) {
-                                String[] array = mapping.split(":");
-                                if (ArrayUtil.isNotEmpty(array) && array.length == 2) {
-                                    // 获取请求方法和路径
-                                    String requestMethod = array[0];
-                                    String requestPath = array[1];
-                                    Request request = new Request(requestMethod, requestPath);
-                                    Handler handler = new Handler(controllerClass, method);
-                                    // 初始化Action map
-                                    ACTION_MAP.put(request, handler);
-                                }
+                            if (requestPath.matches("/\\w+") && requestMethod.matches("\\w+")) {
+                                Request request = new Request(requestMethod, requestPath);
+                                Handler handler = new Handler(controllerClass, method);
+                                // 初始化Action map
+                                ACTION_MAP.put(request, handler);
                             }
                         }
                     }

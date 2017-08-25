@@ -29,6 +29,6 @@ public @interface Action {
      * @return
      * @see com.herohuang.framework.enums.RequestMethod
      */
-    RequestMethod method();
+    RequestMethod method() default RequestMethod.GET;
 
 }
